@@ -1,13 +1,5 @@
-import ProfileActions from "./actions";
-import FollowOA from "./follow-oa";
-import Points from "./points";
-
-export default function ProfilePage() {
-  return (
-    <div className="min-h-full bg-section p-4 space-y-2.5">
-      <Points />
-      <ProfileActions />
-      <FollowOA />
-    </div>
-  );
+import config from "../../../app-config.json";
+export default function Profile() {
+  return (<div><h2>Liên hệ</h2><p>📍 {config.address}</p><p>📞 {config.phone}</p><p>✉️ {config.email}</p>
+    <a className="btn" href={config.zalo} target="_blank">Chat Zalo</a></div>);
 }

@@ -1,20 +1,37 @@
 {
-  "app": {
-    "title": "My Fashion App",
-    "textColor": "black",
-    "headerColor": "#ffffff",
-    "statusBar": "normal",
-    "actionBarHidden": true,
-    "hideAndroidBottomNavigationBar": false,
-    "hideIOSSafeAreaBottom": true,
-    "selfControlLoading": false
+  "name": "Quang An",
+  "phone": "0949636668",
+  "email": "lienhe@quangan.vn",
+  "address": "TP. Đồng Nai",
+  "zalo": "https://zalo.me/0949636668",
+  "mapQuery": "Thành phố Đồng Nai",
+  "company": {
+    "name": "CÔNG TY TNHH CÔNG NGHỆ QUANG AN",
+    "taxCode": "3603677421",
+    "address": "Số 45/1, Khu Phố 8, Phường Tam Hiệp, TP. Đồng Nai",
+    "hotline": "0949636668",
+    "email": "lienhe@quangan.vn"
   },
-  "listCSS": [],
-  "listSyncJS": [],
-  "listAsyncJS": [],
-  "template": {
-    "name": "zaui-fashion",
-    "apiUrl": "",
-    "oaIDtoOpenChat": "4318657068771012646"
-  }
+  "branches": [
+    { "title": "TRỤ SỞ CHÍNH", "address": "Số 45/1, Khu Phố 8, Phường Tam Hiệp, TP. Đồng Nai", "phone": "0949 636 668" },
+    { "title": "NHÀ MÁY SẢN XUẤT TRỤ ĐÈN", "address": "Địa chỉ nhà máy", "phone": "0949 636 668" },
+    { "title": "KHO HÀNG MẠ KẼM", "address": "Địa chỉ kho", "phone": "0949 636 668" }
+  ],
+  "guides": [
+    { "label": "Chính sách bảo mật", "url": "#" },
+    { "label": "Chính sách trả lại hàng", "url": "#" },
+    { "label": "Thanh toán và vận chuyển", "url": "#" },
+    { "label": "Hướng dẫn mua hàng", "url": "#" },
+    { "label": "Giới thiệu về công ty", "url": "#" },
+    { "label": "Bản đồ chỉ đường", "url": "#" }
+  ],
+  "socials": [
+    { "label": "f", "url": "#", "color": "#1877f2" },
+    { "label": "◎", "url": "#", "color": "#c13584" },
+    { "label": "♪", "url": "#", "color": "#111" },
+    { "label": "✉", "url": "mailto:lienhe@quangan.vn", "color": "#555" },
+    { "label": "☎", "url": "tel:0949636668", "color": "#25c04a" },
+    { "label": "▶", "url": "#", "color": "#e11d1d" },
+    { "label": "in", "url": "#", "color": "#0a66c2" }
+  ]
 }
