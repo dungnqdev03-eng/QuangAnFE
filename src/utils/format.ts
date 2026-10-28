@@ -1,7 +1,1 @@
-export function formatPrice(price: number) {
-  return new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    currencyDisplay: "code",
-  }).format(price);
-}
+export const formatPrice = (n: number) => (n > 0 ? n.toLocaleString("vi-VN") + " ₫" : "Liên hệ");
