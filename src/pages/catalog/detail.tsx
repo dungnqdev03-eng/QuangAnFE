@@ -9,6 +9,8 @@ import { Loading } from "../../components/State";
 import RichText from "../../components/RichText";
 import CategorySidebar from "../../components/CategorySidebar";
 import config from "../../../app-config.json";
+import OrderModal from "../../components/OrderModal";
+import RelatedProducts from "../../components/RelatedProducts";
 
 type Tab = "desc" | "specs" | "review";
 
@@ -19,6 +21,7 @@ export default function ProductDetail() {
   const [sel, setSel] = useState(0);
   const [startX, setStartX] = useState<number | null>(null);
   const [tab, setTab] = useState<Tab>("desc");
+  const [orderOpen, setOrderOpen] = useState(false);
 
   const images = p ? (p.images?.length ? p.images : [p.image]) : [];
   const total = images.length;
@@ -107,10 +110,10 @@ export default function ProductDetail() {
               ))}
             </div>
 
-            <a href={`tel:${tel}`} className="quickbuy">
-              <b>Mua hàng nhanh</b>
-              <span>Gọi điện xác nhận và giao hàng tận nơi</span>
-            </a>
+<button type="button" className="quickbuy" onClick={() => setOrderOpen(true)}>
+  <b>Mua hàng nhanh</b>
+  <span>Điền thông tin, chúng tôi gọi xác nhận và giao hàng tận nơi</span>
+</button>
 
             {/* <p><Link to={`/admin/product/${p.id}/description`} className="more">✎ Sửa mô tả</Link></p> */}
           </div>
@@ -131,10 +134,13 @@ export default function ProductDetail() {
             {tab === "review" && <p className="muted">Chưa có đánh giá. <Link to="/contact" className="more">Liên hệ tư vấn →</Link></p>}
           </div>
         </section>
+                <RelatedProducts product={p} />
+
       </div>
 
       {/* ===== Cột danh mục đi theo khi cuộn ===== */}
       <CategorySidebar activeId={p.categoryId} />
+      {orderOpen && <OrderModal product={p} onClose={() => setOrderOpen(false)} />}
     </div>
   );
 }
