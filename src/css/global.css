@@ -616,3 +616,97 @@ a.strip-item:hover img { transform: scale(1.06); }
   .strip-track.moving { animation: none; }
   .strip-wrap { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }
+
+/* ===== TỐI ƯU ĐIỆN THOẠI (đặt cuối file để ghi đè) ===== */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; overflow-x: clip; } /* không cho trang lệch ngang */
+img, video, iframe { max-width: 100%; }
+
+@media (max-width: 760px) {
+  input, select, textarea { font-size: 16px !important; } /* iPhone không tự phóng to khi bấm vào ô nhập */
+  .tabpanel { overflow-x: auto; }
+
+  /* Thanh trên cùng */
+  .tbar { font-size: 12px; }
+  .tbar-in { min-height: 34px; gap: 8px; }
+  .tbar-info { gap: 12px; justify-content: center; width: 100%; }
+  .tbar-info > * + * { padding-left: 12px; }
+
+  /* Header gọn hơn */
+  .hbar { gap: 10px; min-height: 56px; }
+  .logo b { font-size: 21px; }
+  .logo small { font-size: 8px; }
+  .hmenu { gap: 18px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .hmenu::-webkit-scrollbar { display: none; }
+  .hmenu a { font-size: 13px; padding: 10px 0; }
+  .hsearch input { width: 120px; }
+
+  /* Banner */
+  .hero2-in { padding-top: 26px; padding-bottom: 26px; }
+  .hero2-text h1 { font-size: 24px; }
+  .lead { font-size: 14px; }
+  .hero2-btns { gap: 10px; margin-bottom: 22px; }
+  .hero2-btns .btn.big, .btn-outline { padding: 12px 18px; font-size: 13.5px; }
+  .feats { gap: 14px; }
+
+  /* Các khối trang chủ */
+  .sec { padding-top: 28px; }
+  .sec-head h2 { font-size: 19px; }
+  .catgrid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .catbody { padding: 12px; }
+  .catbody h3 { font-size: 14px; }
+  .catbody p { display: none; }
+  .why { padding: 20px; margin-top: 24px; }
+  .why h2 { font-size: 18px; }
+  .stats { gap: 22px; }
+  .strip-item { width: 230px; }
+
+  /* Lưới sản phẩm 2 cột */
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .card { padding: 8px; gap: 6px; }
+  .name { font-size: 13.5px; line-height: 1.35; }
+  .price { font-size: 14px; }
+  .card .btn { padding: 9px 4px; font-size: 12.5px; text-align: center; }
+  .rel-track .card { flex-basis: 160px; }
+
+  /* Trang Sản phẩm: danh mục thành hàng nút vuốt ngang, khỏi chiếm cả màn hình */
+  .layout2 { gap: 14px; }
+  .layout2 .sidecat { position: static; }
+  .layout2 .sidecat-h { display: none; }
+  .layout2 .sidecat ul { display: flex; gap: 8px; overflow-x: auto; padding: 10px; scrollbar-width: none; }
+  .layout2 .sidecat ul::-webkit-scrollbar { display: none; }
+  .layout2 .sidecat li a,
+  .layout2 .sidecat li:last-child a { white-space: nowrap; border: 1px solid #d1d5db; border-radius: 20px; padding: 8px 14px; font-size: 13.5px; }
+  .layout2 .sidecat li a::before { display: none; }
+  .layout2 .sidecat li a.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* Trang chi tiết sản phẩm */
+  .pdp .gslide img { aspect-ratio: 1 / 1; }
+  .garrow { opacity: 1; width: 36px; height: 36px; }
+  .gthumb { width: 60px; height: 60px; }
+  .pinfo h1 { font-size: 21px; }
+  .pbtns .btn, .pbtns .btn-outline { flex: 1 1 100%; text-align: center; }
+  .addrbox { font-size: 13.5px; }
+  .quickbuy b { font-size: 18px; }
+  .quickbuy span { font-size: 13px; }
+  .rel-head h2 { font-size: 19px; }
+
+  /* Thanh toán, đặt mua */
+  .co-main h1 { font-size: 20px; }
+  .om-prod img { width: 72px; height: 72px; }
+
+  /* Chân trang */
+  .fgrid { gap: 28px; }
+  .fmap { height: 220px; }
+  .fh { font-size: 18px; }
+
+  /* Nút liên hệ nổi nhỏ lại để đỡ che nội dung */
+  .fc { gap: 30px; }
+  .fc-ic { width: 42px; height: 42px; }
+}
+
+/* Màn hình rất nhỏ: thanh trên cùng chỉ giữ số điện thoại */
+@media (max-width: 420px) {
+  .tbar-info a[href^="mailto"] { display: none; }
+}
+
