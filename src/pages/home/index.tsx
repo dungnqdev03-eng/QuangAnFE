@@ -64,6 +64,7 @@ export default function Home() {
   />
 </div>      </div>
     </section>
+     <ImageStrip />
 
     {/* ===== DANH MỤC ===== */}
     <section className="container sec">
