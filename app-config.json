@@ -1,7 +1,7 @@
 {
   "name": "Quang An",
   "phone": "0949636668",
-  "email": "lienhe@quangan.vn",
+  "email": "chinh.quangantechnology@gmail.com",
   "address": "TP. Đồng Nai",
   "zalo": "https://zalo.me/0949636668",
   "mapQuery": "Thành phố Đồng Nai",
@@ -10,7 +10,7 @@
     "taxCode": "3603677421",
     "address": "Số 45/1, Khu Phố 8, Phường Tam Hiệp, TP. Đồng Nai",
     "hotline": "0949636668",
-    "email": "lienhe@quangan.vn"
+    "email": "chinh.quangantechnology@gmail.com"
   },
   "branches": [
     { "title": "TRỤ SỞ CHÍNH", "address": "Số 45/1, Khu Phố 8, Phường Tam Hiệp, TP. Đồng Nai", "phone": "0949 636 668" },
@@ -21,7 +21,7 @@
     { "label": "Chính sách bảo mật", "url": "#" },
     { "label": "Chính sách trả lại hàng", "url": "#" },
     { "label": "Thanh toán và vận chuyển", "url": "#" },
-    { "label": "Hướng dẫn mua hàng", "url": "#" },
+    { "label": "Hướng dẫn mua hàng", "url": "/contact" },
     { "label": "Giới thiệu về công ty", "url": "#" },
     { "label": "Bản đồ chỉ đường", "url": "#" }
   ],
@@ -33,5 +33,9 @@
     { "label": "☎", "url": "tel:0949636668", "color": "#25c04a" },
     { "label": "▶", "url": "#", "color": "#e11d1d" },
     { "label": "in", "url": "#", "color": "#0a66c2" }
-  ]
+  ],
+  "zalo": "https://zalo.me/0949636668",
+"messenger": "https://www.facebook.com/profile.php?id=61596368510746"
+
+  
 }

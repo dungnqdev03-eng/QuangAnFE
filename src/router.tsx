@@ -6,6 +6,7 @@ import ProductDetail from "./pages/catalog/detail";
 import Search from "./pages/search";
 import Cart from "./pages/cart";
 import Profile from "./pages/profile";
+import About from "./pages/about";
 
 export default createBrowserRouter([
   { path: "/", element: <Layout />, children: [
@@ -15,5 +16,7 @@ export default createBrowserRouter([
     { path: "search", element: <Search /> },
     { path: "cart", element: <Cart /> },
     { path: "contact", element: <Profile /> },
+    { path: "about", element: <About /> },
+    
   ]},
 ]);

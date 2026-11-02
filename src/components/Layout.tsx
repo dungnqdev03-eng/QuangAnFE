@@ -1,13 +1,19 @@
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useCart } from "../state";
+import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
+import { cartActions, useCart } from "../state";
+import { useEffect, useState } from "react";
+
 import Footer from "./Footer";
 import config from "../../app-config.json";
+import FloatingContact from "./FloatingContact";
+
+
+const OPEN_HOURS = "Mở cửa từ 8:00 đến 21:00";
+
 
 // to = "#" nghĩa là chưa có trang, bạn đổi khi làm xong trang đó
 const NAV = [
   { label: "Trang chủ", to: "/" },
-  { label: "Giới thiệu", to: "#" },
+  { label: "Giới thiệu", to: "/about" },
   { label: "Sản phẩm", to: "/catalog" },
   { label: "Dịch vụ", to: "/catalog?category=4" },
   { label: "Dự án", to: "#" },
@@ -19,11 +25,42 @@ export default function Layout() {
   const cart = useCart();
   const nav = useNavigate();
   const loc = useLocation();
+  // Rời khỏi trang Thanh toán thì xóa giỏ
+useEffect(() => {
+  if (loc.pathname !== "/cart") cartActions.clear();
+}, [loc.pathname]);
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const count = cart.reduce((s, i) => s + i.qty, 0);
 
   return (<>
+<ScrollRestoration />   <div className="tbar">
+  <div className="container tbar-in">
+    <nav className="tbar-links">
+      <Link to="/">Trang chủ</Link>
+      <a href="/about">Giới thiệu</a>
+      <a href="/contact">Hướng dẫn mua hàng</a>
+      <Link to="/contact">Hướng dẫn đường đi</Link>
+    </nav>
+
+    <div className="tbar-info">
+      <a href={`mailto:${config.email}`}>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+        {config.email}
+      </a>
+      <span className="tbar-hours">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+        {OPEN_HOURS}
+      </span>
+      <a href={`tel:${config.phone.replace(/\s/g, "")}`}>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg>
+        {config.phone}
+      </a>
+    </div>
+  </div>
+</div>
+
+<header className="header"></header>
     <header className="header">
       <div className="container hbar">
         <Link to="/" className="logo">
@@ -53,10 +90,8 @@ export default function Layout() {
               </svg>
             </button>
           </form>
-          <Link to="/cart" className="icon-btn cart-btn" aria-label="Báo giá">
-            🛒{count > 0 && <span className="badge">{count}</span>}
-          </Link>
-          <a href={`tel:${config.phone.replace(/\s/g, "")}`} className="btn pill">📞 Liên hệ ngay</a>
+
+          <a href={`tel:${config.phone.replace(/\s/g, "/contact")}`} className="btn pill">Liên hệ ngay</a>
         </div>
       </div>
     </header>
@@ -64,5 +99,6 @@ export default function Layout() {
     {/* Trang chủ tự quản lý bố cục full-width, các trang khác nằm trong container */}
     <main className={loc.pathname === "/" ? "" : "container"}><Outlet /></main>
     <Footer />
+    <FloatingContact />
   </>);
 }
