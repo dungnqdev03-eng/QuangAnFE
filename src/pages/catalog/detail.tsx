@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getProduct } from "../../api/product";
 import { getCategories } from "../../api/category";
 import { useAsync } from "../../hooks";
@@ -22,6 +22,7 @@ export default function ProductDetail() {
   const [startX, setStartX] = useState<number | null>(null);
   const [tab, setTab] = useState<Tab>("desc");
   const [orderOpen, setOrderOpen] = useState(false);
+  const nav = useNavigate();
 
   const images = p ? (p.images?.length ? p.images : [p.image]) : [];
   const total = images.length;
@@ -98,8 +99,7 @@ export default function ProductDetail() {
             <div className="price big">{formatPrice(p.price)}</div>
 
             <div className="pbtns">
-              <button className="btn" onClick={() => cartActions.add(p)}>Thêm vào báo giá</button>
-              <Link to="/contact" className="btn-outline">Hướng dẫn mua hàng</Link>
+              <button className="btn" onClick={() => { cartActions.add(p); nav("/cart", { state: { added: p.name } }); }}>Thêm vào báo giá</button>              <Link to="/contact" className="btn-outline">Hướng dẫn mua hàng</Link>
             </div>
 
             <p className="hotline">📞 Hotline: <b>{config.phone}</b></p>

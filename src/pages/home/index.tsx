@@ -7,17 +7,32 @@ import { Loading } from "../../components/State";
 import config from "../../../app-config.json";
 import { categoryImage } from "../../utils/categoryImages";
 import { mockCatImage } from "../../utils/mockImage";
+import FeatureStrip from "../../components/FeatureStrip";
+import ImageStrip from "../../components/ImageStrip";
 
 // Ảnh tạm. Thay bằng ảnh thật: bỏ file vào src/static/ rồi import vào đây
-const ph = (w: number, h: number, t: string) =>
-  `https://placehold.co/${w}x${h}/e8eef6/0b2545?text=${encodeURIComponent(t)}`;
+// Biểu tượng SVG vẽ lại theo ảnh mẫu (nét trắng, nằm trong vòng tròn cam)
+const P = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "#fff", strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+
+const ICONS = {
+  // Huy chương
+  award: <svg {...P}><circle cx="12" cy="9" r="5.5" /><circle cx="12" cy="9" r="2" /><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" /></svg>,
+  // Cờ lê + tua vít
+  tools: <svg {...P}><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z" /><path d="M4 4l3 3M7 7l9 9M16 16l4 4" /></svg>,
+  // Xe tải
+  truck: <svg {...P}><rect x="2" y="6" width="12" height="10" rx="1" /><path d="M14 9.5h4l3 3.5v3h-7z" /><circle cx="7" cy="18" r="2" /><circle cx="17" cy="18" r="2" /></svg>,
+  // Vương miện
+  crown: <svg {...P}><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z" /></svg>,
+  // Tai nghe hỗ trợ (tôi tự vẽ thêm, không có trong ảnh)
+  support: <svg {...P}><path d="M4 14v-2a8 8 0 0 1 16 0v2" /><rect x="3" y="14" width="4" height="6" rx="1.5" /><rect x="17" y="14" width="4" height="6" rx="1.5" /></svg>,
+};
 
 const FEATS = [
-  { icon: "🛡️", t: "Chất lượng", d: "Đạt tiêu chuẩn quốc tế" },
-  { icon: "⚙️", t: "Kinh nghiệm", d: "Hơn 10 năm trong ngành" },
-  { icon: "🎧", t: "Hỗ trợ nhanh", d: "24/7 mọi lúc mọi nơi" },
+  { icon: ICONS.award, t: "Cam kết chất lượng", d: "ISO 9001:2015" },
+  { icon: ICONS.tools, t: "Kinh nghiệm", d: "Hơn 5 năm trong ngành" },
+  { icon: ICONS.support, t: "Hỗ trợ nhanh", d: "24/7 mọi lúc mọi nơi" },
 ];
-const STATS = [["10+", "Năm kinh nghiệm"], ["500+", "Công trình"], ["100%", "Khách hàng hài lòng"]];
+const STATS = [["5+", "Năm kinh nghiệm"], ["500+", "Công trình"], ["100%", "Khách hàng hài lòng"]];
 
 export default function Home() {
   const cats = useAsync(getCategories, []);
@@ -34,7 +49,7 @@ export default function Home() {
             giúp công trình tối ưu hiệu suất, tiết kiệm chi phí và vận hành lâu dài.</p>
           <div className="hero2-btns">
             <Link to="/cart" className="btn pill big">Xem báo giá →</Link>
-            <Link to="/contact" className="btn-outline">📞 Liên hệ tư vấn</Link>
+            <Link to="/contact" className="btn-outline">Liên hệ tư vấn</Link>
           </div>
           <div className="feats">
             {FEATS.map((f) => (
@@ -45,8 +60,7 @@ export default function Home() {
         </div>
 <div className="hero2-img">
   <img
-    src="https://ba-design.vn/wp-content/uploads/2025/06/tru-den-san-vuon-1.jpg"
-    alt="Trụ đèn sân vườn"
+    src="https://res.cloudinary.com/odufc811/image/upload/v1793433631/42c30e6e-6f76-4798-8411-a20ce4f98d68.jpg"
   />
 </div>      </div>
     </section>
@@ -68,7 +82,7 @@ export default function Home() {
   src={categoryImage(c)}
   alt={c.name}
   onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = mockCatImage(c.name); }}
-/><span className="caticon">{c.icon}</span></div>
+/></div>
             <div className="catbody">
               <h3>{c.name}</h3>
               <p>Tư vấn, cung cấp và lắp đặt đáp ứng mọi nhu cầu công trình.</p>
