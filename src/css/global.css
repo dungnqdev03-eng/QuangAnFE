@@ -710,3 +710,39 @@ img, video, iframe { max-width: 100%; }
   .tbar-info a[href^="mailto"] { display: none; }
 }
 
+/* ===== TRÌNH CHIẾU ẢNH (giữa banner và danh mục) ===== */
+.sl { padding: 24px 0 4px; }
+.sl-box { position: relative; aspect-ratio: 21 / 9; border-radius: 14px; overflow: hidden; background: #e5e5e5; box-shadow: 0 2px 12px rgba(0,0,0,.14); touch-action: pan-y; }
+
+/* Hiệu ứng: ảnh cũ mờ dần, ảnh mới hiện ra và thu nhẹ từ to về vừa */
+.sl-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease, visibility 0s linear .9s; }
+.sl-slide.on { opacity: 1; visibility: visible; z-index: 1; transition: opacity .9s ease, visibility 0s; }
+.sl-slide a, .sl-slide img { display: block; width: 100%; height: 100%; }
+.sl-slide img { object-fit: cover; user-select: none; transform: scale(1.08); transition: transform 0s linear .9s; }
+.sl-slide.on img { transform: scale(1); transition: transform 6s ease-out; }
+
+/* Nút trước, sau ở hai bên */
+.sl-arrow { position: absolute; top: 50%; z-index: 3; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: #111; font-size: 30px; line-height: 1; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.25); opacity: 0; transition: opacity .25s, background .2s, color .2s, transform .2s; }
+.sl-box:hover .sl-arrow, .sl-arrow:focus-visible { opacity: 1; }
+.sl-arrow:hover { background: var(--accent); color: #fff; transform: translateY(-50%) scale(1.08); }
+.sl-arrow.left { left: 14px; }
+.sl-arrow.right { right: 14px; }
+@media (hover: none) { .sl-arrow { opacity: 1; } } /* điện thoại: luôn hiện nút */
+
+/* Chấm tròn chỉ vị trí ảnh */
+.sl-dots { position: absolute; left: 0; right: 0; bottom: 12px; z-index: 3; display: flex; justify-content: center; gap: 8px; }
+.sl-dots button { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 5px; background: rgba(255,255,255,.65); box-shadow: 0 1px 4px rgba(0,0,0,.3); cursor: pointer; transition: width .3s, background .3s; }
+.sl-dots button.on { width: 28px; background: var(--accent); }
+
+@media (max-width: 760px) {
+  .sl { padding-top: 16px; }
+  .sl-box { aspect-ratio: 16 / 10; border-radius: 12px; }
+  .sl-arrow { width: 36px; height: 36px; font-size: 24px; }
+  .sl-arrow.left { left: 8px; }
+  .sl-arrow.right { right: 8px; }
+}
+
+/* Người dùng tắt hiệu ứng chuyển động: không tự chạy, chỉ đổi ảnh khi bấm */
+@media (prefers-reduced-motion: reduce) {
+  .sl-slide, .sl-slide.on, .sl-slide img, .sl-slide.on img { transition: none; }
+}
