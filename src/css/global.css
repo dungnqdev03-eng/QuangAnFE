@@ -746,3 +746,17 @@ img, video, iframe { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .sl-slide, .sl-slide.on, .sl-slide img, .sl-slide.on img { transition: none; }
 }
+
+/* ===== LOGO ẢNH + CHỮ NHỎ Ở GÓC DƯỚI PHẢI ===== */
+.logo { display: flex; flex-direction: row; align-items: flex-end; gap: 6px; flex: none; width: auto; line-height: 1; }
+.logo img { display: block; height: 40px !important; width: auto !important; max-width: 170px; object-fit: contain; }
+.logo .logo-text { display: flex; flex-direction: column; align-items: flex-start; padding-bottom: 2px; line-height: 1.1; }
+.logo .logo-text b { font-size: 14px; font-weight: 800; letter-spacing: .3px; color: #111; white-space: nowrap; }
+.logo .logo-text small { font-size: 7.5px; font-weight: 700; letter-spacing: .6px; color: var(--accent); white-space: nowrap; }
+
+@media (max-width: 760px) {
+  .logo img { height: 32px !important; max-width: 130px; }
+  .logo .logo-text b { font-size: 12px; }
+  .logo .logo-text small { font-size: 6.5px; }
+}
+@media (max-width: 420px) { .logo .logo-text small { display: none; } } /* màn hình rất nhỏ: bỏ dòng phụ cho gọn */
