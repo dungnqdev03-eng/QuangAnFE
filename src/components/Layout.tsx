@@ -20,8 +20,7 @@ const NAV = [
   { label: "Tin tức", to: "#" },
   { label: "Liên hệ", to: "/contact" },
 ];
-
-export default function Layout() {
+const LOGO_URL = "https://res.cloudinary.com/odufc811/image/upload/e_make_transparent:20/e_trim/h_80,f_auto,q_auto/v1793686251/Screenshot_2026-11-03_113121.png";export default function Layout() {
   const cart = useCart();
   const nav = useNavigate();
   const loc = useLocation();
@@ -63,10 +62,13 @@ useEffect(() => {
 <header className="header"></header>
     <header className="header">
       <div className="container hbar">
-        <Link to="/" className="logo">
-          <b>QUANG AN</b>
-          <small>TRỤ ĐÈN & CƠ KHÍ</small>
-        </Link>
+<Link to="/" className="logo" aria-label="Trang chủ">
+  <img src={LOGO_URL} alt={config.name} height={40} style={{ height: 40, width: "auto" }} />
+  <span className="logo-text">
+    <b>{config.name.toUpperCase()}</b>
+    <small>TRỤ ĐÈN & CƠ KHÍ</small>
+  </span>
+</Link>
 
         <nav className="hmenu">
           {NAV.map((n) => {
@@ -91,7 +93,7 @@ useEffect(() => {
             </button>
           </form>
 
-          <a href={`tel:${config.phone.replace(/\s/g, "/contact")}`} className="btn pill">Liên hệ ngay</a>
+          <a href={`tel:${config.phone.replace(/\s/g, "")}`} className="btn pill">Liên hệ ngay</a>
         </div>
       </div>
     </header>
